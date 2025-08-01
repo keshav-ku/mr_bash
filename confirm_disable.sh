@@ -12,8 +12,8 @@ getent passwd "$USERNAME" || echo "ユーザー $USERNAME は存在しません"
 
 echo ""
 echo "=== authorized_keys の中身 (/home/$USERNAME/.ssh/authorized_keys) ==="
-if [ -f /home/"$USERNAME"/.ssh/authorized_keys ]; then
-  cat /home/"$USERNAME"/.ssh/authorized_keys
+if sudo test -f /home/"$USERNAME"/.ssh/authorized_keys; then
+  sudo cat /home/"$USERNAME"/.ssh/authorized_keys
 else
   echo "authorized_keys ファイルがありません"
 fi
@@ -24,7 +24,7 @@ sudo grep "$USERNAME" /etc/sudoers /etc/sudoers.d/* 2>/dev/null || echo "sudoers
 
 echo ""
 echo "=== 実行中のプロセス ==="
-ps -u "$USERNAME" || echo "プロセスはありません"
+sudo ps -u "$USERNAME" || echo "プロセスはありません"
 
 echo ""
 echo "=== crontab の内容 ==="

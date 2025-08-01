@@ -10,7 +10,7 @@ fi
 echo "ユーザーを無効化しています: $USERNAME"
 
 # authorized_keysが存在する場合、名前を変更する
-if [ -f /home/$USERNAME/.ssh/authorized_keys ]; then
+if sudo test -f /home/$USERNAME/.ssh/authorized_keys; then
   sudo mv /home/$USERNAME/.ssh/authorized_keys /home/$USERNAME/.ssh/authorized_keys.disabled
   echo "authorized_keysをリネームしました"
 else
