@@ -20,7 +20,12 @@ fi
 
 echo ""
 echo "=== sudoers の設定 ==="
-sudo grep "$USERNAME" /etc/sudoers /etc/sudoers.d/* 2>/dev/null || echo "sudoers に設定はありません"
+if sudo grep "$USERNAME" /etc/sudoers /etc/sudoers.d/* 2>/dev/null; then
+  :
+else
+  echo "sudoers に設定はありません"
+fi
+
 
 echo ""
 echo "=== 実行中のプロセス ==="
