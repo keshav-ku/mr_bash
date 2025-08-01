@@ -20,11 +20,15 @@ fi
 
 echo ""
 echo "=== sudoers の設定 ==="
-if sudo grep "$USERNAME" /etc/sudoers /etc/sudoers.d/* 2>/dev/null; then
-  :
+
+MATCH=$( (sudo grep "$USERNAME" /etc/sudoers 2>/dev/null; sudo grep "$USERNAME" /etc/sudoers.d/* 2>/dev/null) )
+
+if [ -n "$MATCH" ]; then
+  echo "$MATCH"
 else
   echo "sudoers に設定はありません"
 fi
+
 
 
 echo ""
