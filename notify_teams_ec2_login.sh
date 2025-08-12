@@ -76,5 +76,5 @@ curl -s -H "Content-Type: application/json" -d "$PAYLOAD" "$WEBHOOK_URL"
 # sudo vi /usr/local/bin/notify_teams_ec2_login.sh
 # sudo chmod +x /usr/local/bin/notify_teams.sh
 # sudo vi /etc/pam.d/sshd
-# session optional pam_exec.so /usr/local/bin/notify_teams.sh login | session required pam_exec.so /usr/local/bin/notify_teams.sh login
+# session optional pam_exec.so /usr/local/bin/notify_teams_ec2_login.sh login | session required pam_exec.so /usr/local/bin/notify_teams_ec2_login.sh login
 # sudo systemctl restart sshd
