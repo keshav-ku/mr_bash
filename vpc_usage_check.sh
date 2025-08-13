@@ -107,4 +107,12 @@ aws ec2 describe-vpc-peering-connections \
     --query "VpcPeeringConnections[].VpcPeeringConnectionId" \
     --output table
 
+# *** Route Tables ***
+echo -e "\n--- Route Tables ---"
+aws ec2 describe-route-tables \
+    --profile $PROFILE --region $REGION \
+    --filters "Name=vpc-id,Values=$VPC_ID" \
+    --query "RouteTables[].{ID:RouteTableId,Main:Associations[0].Main}" \
+    --output table
+
 echo -e "\n=== Resource check complete ==="
